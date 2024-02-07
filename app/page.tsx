@@ -1,5 +1,10 @@
+import { UserButton } from "@clerk/nextjs";
+
 export default function Home() {
   return (
-    <>COllab-Draaw</>
+    <div className={`flex flex-col`}>
+      <p className={``}>Authenticated user</p>
+      <UserButton/>
+    </div>
   );
 }
