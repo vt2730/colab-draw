@@ -1,8 +1,8 @@
 "use client";
 
-// import qs from "query-string";
+import qs from "query-string";
 import { Search } from "lucide-react";
-// import { useDebounce } from "usehooks-ts";
+import { useDebounce } from "usehooks-ts";
 import { useRouter } from "next/navigation";
 import {
   ChangeEvent,
@@ -15,22 +15,22 @@ import { Input } from "@/components/ui/input";
 export const SearchInput = () => {
   const router = useRouter();
   const [value, setValue] = useState("");
-//   const debouncedValue = useDebounce(value, 500);
+  const debouncedValue = useDebounce(value, 500);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
   };
 
-//   useEffect(() => {
-//     const url = qs.stringifyUrl({
-//       url: "/",
-//       query: {
-//         search: debouncedValue,
-//       },
-//     }, { skipEmptyString: true, skipNull: true });
+  useEffect(() => {
+    const url = qs.stringifyUrl({
+      url: "/",
+      query: {
+        search: debouncedValue,
+      },
+    }, { skipEmptyString: true, skipNull: true });
 
-//     router.push(url);
-//   }, [debouncedValue, router]);
+    router.push(url);
+  }, [debouncedValue, router]);
 
   return (
     <div className="w-full relative">
