@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-// import { toast } from "sonner";
+import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { useOrganization } from "@clerk/nextjs";
 
@@ -22,12 +22,11 @@ export const EmptyBoards = () => {
       title: "Untitled"
     })
       .then((id) => {
-        // toast.success("Board created");
+        toast.success("Board created");
         router.push(`/board/${id}`);
       })
       .catch(() =>
-        // toast.error("Failed to create board")
-        console.log("Failed to create board")
+        toast.error("Failed to create board")
       );
   };
 
